@@ -14,12 +14,12 @@ run: "docker-compose up" from docker client inside "latest" root folder
 
 Manual installation without docker:
 
-## Steps to Setup the Spring Boot Back end app (polling-app-server)
+## Steps to Setup the Spring Boot Back end app (restful-web-services)
 
 1. **Clone the application**
 
 	```bash
-	git clone https://github.com/leandrotur/ensolvers-todo.git
+	git clone https://github.com/leandrotur/EnsolversChallenge.git
 	cd restful-web-services
 	```
 
