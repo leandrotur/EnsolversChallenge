@@ -13,9 +13,9 @@ public class TodoHardcodedService {
 	private static long idCounter = 0;
 
 	static {
-		todos.add(new Todo(++idCounter, "ensolversChallenge", "Learn to Dance 2", new Date(), false));
-		todos.add(new Todo(++idCounter, "ensolversChallenge", "Learn about Microservices 2", new Date(), false));
-		todos.add(new Todo(++idCounter, "ensolversChallenge", "Learn about Angular", new Date(), false));
+		todos.add(new Todo(++idCounter, "ensolversChallenge", "Learn to Dance 2", new Date(), "false"));
+		todos.add(new Todo(++idCounter, "ensolversChallenge", "Learn about Microservices 2", new Date(), "false"));
+		todos.add(new Todo(++idCounter, "ensolversChallenge", "Learn about Angular", new Date(), "false"));
 	}
 
 	public List<Todo> findAll() {

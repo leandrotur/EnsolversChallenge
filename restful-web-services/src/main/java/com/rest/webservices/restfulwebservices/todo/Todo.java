@@ -14,19 +14,19 @@ public class Todo {
 	private String username;
 	private String description;
 	private Date targetDate;
-	private boolean isDone;
+	private String folder;
 	
 	public Todo() {
 		
 	}
 
-	public Todo(long id, String username, String description, Date targetDate, boolean isDone) {
+	public Todo(long id, String username, String description, Date targetDate, String Folder) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.description = description;
 		this.targetDate = targetDate;
-		this.isDone = isDone;
+		this.folder = Folder;
 	}
 
 	public Long getId() {
@@ -61,12 +61,12 @@ public class Todo {
 		this.targetDate = targetDate;
 	}
 
-	public boolean isDone() {
-		return isDone;
+	public String getFolder() {
+		return folder;
 	}
 
-	public void setDone(boolean isDone) {
-		this.isDone = isDone;
+	public void setDone(String Folder) {
+		this.folder = Folder;
 	}
 
 	@Override
