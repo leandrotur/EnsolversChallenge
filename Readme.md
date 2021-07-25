@@ -1,5 +1,32 @@
+##  Summary: Main Artifacts & others
 
-Manual installation without docker:
+MySQL 8.0.26, Spring Boot 2.5.3, React 17.0.2
+Ports: backend:8080, frontend: 4200, mysql:3306
+frontend default login credentials:
+```bash
+user: ensolversChallenge password: dummy
+```
+
+## Steps to Setup todo app through docker
+Prerequisites:
+
+1. Docker: https://www.docker.com/products/docker-desktop
+
+2. Maven: https://maven.apache.org/download.cgi
+
+Installation:
+windows:
+run: install.cmd ##'this will call the docker-compose.yml' to build 3 containers (frontend, backend, db)##
+Linux/Mac
+run: "docker-compose up" inside install.bash file from docker client inside "latest" root folder
+
+Installation:
+windows:
+run: install.cmd ##'this will call the docker-compose.yml' to build 3 containers (frontend, backend, db)##
+Linux/Mac
+run: "docker-compose up" from docker client inside "latest" root folder
+
+##Manual installation WITHOUT DOCKER:
 
 ## Steps to Setup the Spring Boot Back end app (restful-web-services)
 
@@ -54,16 +81,4 @@ npm install && npm start
 The front-end server will start on port `4200`.
 
 
-## Steps to Setup todo app through docker
-Prerequisites:
-
-1. Docker: https://www.docker.com/products/docker-desktop
-
-2. Maven: https://maven.apache.org/download.cgi
-
-Installation:
-windows:
-run: install.cmd ##'this will call the docker-compose.yml' to build 3 containers (frontend, backend, db)##
-Linux/Mac
-run: "docker-compose up" from docker client inside "latest" root folder
 
