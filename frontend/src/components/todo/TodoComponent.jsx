@@ -75,7 +75,7 @@ class TodoComponent extends Component {
 
     render() {
 
-        let { description, targetDate } = this.state
+        let { folder, description, targetDate } = this.state
         //let targetDate = this.state.targetDate
 
         return (
@@ -83,7 +83,7 @@ class TodoComponent extends Component {
                 <h1>Todo</h1>
                 <div className="container">
                     <Formik
-                        initialValues={{ description, targetDate }}
+                        initialValues={{ folder, description, targetDate }}
                         onSubmit={this.onSubmit}
                         validateOnChange={false}
                         validateOnBlur={false}
