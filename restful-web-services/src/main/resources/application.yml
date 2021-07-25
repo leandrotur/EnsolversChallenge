@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/sandbox?useSSL=false
-    username: root1
-    password: root1
+    url: jdbc:mysql://127.0.0.1:3306/sandbox
+    username: root
+    password: root
   jpa:
     hibernate:
       ddl-auto: update

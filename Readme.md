@@ -1,16 +1,3 @@
-## Steps to Setup todo app through docker
-Prerequisites: 
-
-1. Docker: https://www.docker.com/products/docker-desktop
-
-2. Maven: https://maven.apache.org/download.cgi
-
-Installation:
-windows:
-run: install.cmd ##'this will call the docker-compose.yml' to build 3 containers (frontend, backend, db)##
-Linux/Mac
-run: "docker-compose up" from docker client inside "latest" root folder
-
 
 Manual installation without docker:
 
@@ -23,8 +10,10 @@ Manual installation without docker:
 	cd restful-web-services
 	```
 
-3. **Change  username and password to login from the frontend**
-
+3. **Change  username and password to login from the frontend ()**
+     
+	*current user: ensolversChallenge pwd: dummy
+   
 	+ open `src/main/resources/application.properties` file.
 
 	+ change `spring.security.user.name` and `spring.security.user.password` properties to login once frontend is confifured in below steps
@@ -63,3 +52,18 @@ npm install && npm start
 ```
 
 The front-end server will start on port `4200`.
+
+
+## Steps to Setup todo app through docker
+Prerequisites:
+
+1. Docker: https://www.docker.com/products/docker-desktop
+
+2. Maven: https://maven.apache.org/download.cgi
+
+Installation:
+windows:
+run: install.cmd ##'this will call the docker-compose.yml' to build 3 containers (frontend, backend, db)##
+Linux/Mac
+run: "docker-compose up" from docker client inside "latest" root folder
+
