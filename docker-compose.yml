@@ -1,39 +1,46 @@
 version: '3'
 services:
+
+
+
   db1:
-    container_name: mysql57
-    image: mysql:5.7
-    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    container_name: db1
+    image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sandbox
       MYSQL_USER: root1
       MYSQL_PASSWORD: root1
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      DB_USERNAME: root1
+      DB_PASSWORD: root1
     ports:
       - 3306:3306
+    security_opt:
+      - seccomp:unconfined
     volumes:
       - ./docker/db/data:/var/lib/mysql
       - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./docker/db/sql:/docker-entrypoint-initdb.d
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
-      - back
-
+      - backend1
 
   restful-web-services:
     build: ./restful-web-services
     container_name: restful-web-services
+    restart: always
     environment:
-        SPRING_DATASOURCE_URL: jdbc:mysql://db1:3306/sandbox?useSSL=false
+        SPRING_DATASOURCE_URL: jdbc:mysql://db1:3306/sandbox?autoReconnect=true&useSSL=false&verifyServerCertificate=false
         SPRING_DATASOURCE_USERNAME: root
         SPRING_DATASOURCE_PASSWORD: root
+        SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
     ports:
       - 8080:8080
     depends_on:
       - db1 # This service depends on mysql. Start that first.
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
-      - back
-      - front
+      - backend1
+      - frontend1
   frontend:
     container_name: frontend
     build: ./frontend
@@ -46,12 +53,12 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
-      - front
+      - frontend1
 
 volumes:
   db:
 
 networks:
-  back:
-  front:
+  backend1:
+  frontend1:
     driver: bridge

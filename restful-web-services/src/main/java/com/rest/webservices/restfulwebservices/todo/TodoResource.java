@@ -1,9 +1,12 @@
 package com.rest.webservices.restfulwebservices.todo;
 
 import java.net.URI;
+import java.util.Comparator;
 import java.util.List;
 
+import org.hibernate.annotations.SortComparator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.OrderBy;
+
 @CrossOrigin(origins = "*")
 @RestController
 public class TodoResource {
@@ -24,9 +29,15 @@ public class TodoResource {
 	private TodoHardcodedService todoService;
 
 	@GetMapping("/users/{username}/todos")
+	@OrderBy("folder asc")
+	@SortComparator(TodoComparator.class)
 	public List<Todo> getAllTodos(@PathVariable String username) {
 		// Thread.sleep(3000);
 		return todoService.findAll();
+	}
+
+	private Sort orderByFolderAsc() {
+		return new Sort(Sort.Direction.ASC, "folder")				;
 	}
 	
 	@GetMapping("/users/{username}/todos/{id}")
@@ -75,5 +86,14 @@ public class TodoResource {
 		
 		return ResponseEntity.created(uri).build();
 	}
-		
+	public class TodoComparator implements Comparator<Todo> {
+
+		public int compare(Todo e1, Todo e2) {
+			return e1.getFolder().compareTo(e2.getFolder());
+		}
+
+		public String toString() {
+			return "TodoComparator";
+		}
+	}
 }

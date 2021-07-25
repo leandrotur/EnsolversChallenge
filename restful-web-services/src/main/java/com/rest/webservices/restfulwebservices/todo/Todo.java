@@ -20,13 +20,13 @@ public class Todo {
 		
 	}
 
-	public Todo(long id, String username, String description, Date targetDate, String Folder) {
+	public Todo(long id, String username, String description, Date targetDate, String folder) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.description = description;
 		this.targetDate = targetDate;
-		this.folder = Folder;
+		this.folder = folder;
 	}
 
 	public Long getId() {
@@ -65,8 +65,8 @@ public class Todo {
 		return folder;
 	}
 
-	public void setDone(String Folder) {
-		this.folder = Folder;
+	public void setFolder(String folder) {
+		this.folder = folder;
 	}
 
 	@Override
