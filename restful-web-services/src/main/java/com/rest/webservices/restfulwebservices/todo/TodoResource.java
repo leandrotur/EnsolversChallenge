@@ -36,10 +36,7 @@ public class TodoResource {
 		return todoService.findAll();
 	}
 
-	private Sort orderByFolderAsc() {
-		return new Sort(Sort.Direction.ASC, "folder")				;
-	}
-	
+
 	@GetMapping("/users/{username}/todos/{id}")
 	public Todo getTodo(@PathVariable String username, @PathVariable long id) {
 		// Thread.sleep(3000);
